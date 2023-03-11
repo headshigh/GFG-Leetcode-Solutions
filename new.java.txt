@@ -1,0 +1,41 @@
+//Djstra's algorithm using priority queue
+class Solution
+{
+    //Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
+    {
+        // Write your code here
+        PriorityQueue<Pair>pq=new PriorityQueue<Pair>((x,y)->x.distance - y.distance);
+        int []dist=new int [V];
+        for(int i=0;i<V;i++){
+            dist[i]=(int)(169);
+        }
+        dist[S]=0;
+        pq.add(new Pair(0,S));
+        while(pq.size()!=0){
+            int distance=pq.peek().distance;
+            int node=pq.peek().node;
+            pq.remove();
+            for(int i=0;i<adj.get(node).size();i++){
+                int adjnode=adj.get(node).get(i).get(0);
+                int adjdistance=adj.get(node).get(i).get(1);
+                if(distance+adjdistance<dist[adjnode]){
+                    dist[adjnode]=distance+adjdistance;
+                    pq.add(new Pair(dist[adjnode],adjnode));
+                }
+            }
+        }
+        return dist;
+    }
+    
+    }
+    class Pair{
+        int node;
+        int distance;
+        public Pair(int distance,int node){
+            this.node=node;
+            this.distance=distance;
+        }
+}
+
