@@ -38,4 +38,4 @@ class Solution
             this.distance=distance;
         }
 }
-
+//!!!!!couldnot complete all test cases must look back into it later!!!!!!!
